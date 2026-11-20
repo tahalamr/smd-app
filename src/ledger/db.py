@@ -33,7 +33,7 @@ class Money(TypeDecorator):
     def process_result_value(self, value: int | None, dialect) -> Decimal | None:
         if value is None:
             return None
-        return Decimal(value) / 100
+        return Decimal(value).scaleb(-2)
 
 
 class Base(DeclarativeBase):
